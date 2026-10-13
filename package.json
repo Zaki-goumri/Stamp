@@ -1,13 +1,13 @@
 {
-  "name": "oauth-charter",
+  "name": "stamp",
   "version": "0.0.1",
   "description": "NestJS OAuth 2.0 authorization code + PKCE library",
   "private": true,
   "license": "UNLICENSED",
-  "main": "dist/libs/oauth-charter/libs/oauth-charter/src/index.js",
-  "types": "dist/libs/oauth-charter/libs/oauth-charter/src/index.d.ts",
+  "main": "dist/libs/stamp/libs/stamp/src/index.js",
+  "types": "dist/libs/stamp/libs/stamp/src/index.d.ts",
   "scripts": {
-    "build": "nest build oauth-charter",
+    "build": "nest build stamp",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage"

@@ -1,0 +1,15 @@
+import { ModuleMetadata, Type } from "@nestjs/common";
+import { CodeStore, JwtSigner, SignetClientsStore } from "./signet-clients.store.interface";
+export type UserIdResolver = (req: any) => string | undefined | Promise<string | undefined>;
+export interface SignetModuleAsyncOptions extends Pick<ModuleMetadata, "imports"> {
+    clientStore: Type<SignetClientsStore>;
+    codeStore: Type<CodeStore>;
+    jwtSigner: Type<JwtSigner>;
+    loginPagePath: string;
+    resolveUserId: UserIdResolver;
+    expiresIn?: number;
+}
+export declare const SIGNET_LOGIN_PAGE_PATH: unique symbol;
+export declare const SIGNET_USER_ID_RESOLVER: unique symbol;
+export declare const SIGNET_TOKEN_EXPIRES_IN: unique symbol;
+export declare const DEFAULT_TOKEN_EXPIRES_IN: number;

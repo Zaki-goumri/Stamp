@@ -1,12 +1,12 @@
 {
   "projects": {
-    "oauth-charter": {
+    "stamp": {
       "type": "library",
-      "root": "libs/oauth-charter",
+      "root": "libs/stamp",
       "entryFile": "index",
-      "sourceRoot": "libs/oauth-charter/src",
+      "sourceRoot": "libs/stamp/src",
       "compilerOptions": {
-        "tsConfigPath": "libs/oauth-charter/tsconfig.lib.json"
+        "tsConfigPath": "libs/stamp/tsconfig.lib.json"
       }
     }
   },
