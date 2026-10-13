@@ -1,0 +1,63 @@
+{
+  "name": "oauth-charter",
+  "version": "0.0.1",
+  "description": "NestJS OAuth 2.0 authorization code + PKCE library",
+  "private": true,
+  "license": "UNLICENSED",
+  "main": "dist/libs/oauth-charter/libs/oauth-charter/src/index.js",
+  "types": "dist/libs/oauth-charter/libs/oauth-charter/src/index.d.ts",
+  "scripts": {
+    "build": "nest build oauth-charter",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage"
+  },
+  "peerDependencies": {
+    "@nestjs/common": "^11.0.0 || ^12.0.0",
+    "@nestjs/core": "^11.0.0 || ^12.0.0",
+    "@nestjs/platform-express": "^11.0.0 || ^12.0.0",
+    "class-transformer": ">=0.4.1",
+    "class-validator": ">=0.13.2",
+    "reflect-metadata": "^0.2.0",
+    "rxjs": "^7.1.0"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^12.0.8",
+    "@nestjs/common": "^12.1.2",
+    "@nestjs/core": "^12.1.2",
+    "@nestjs/platform-express": "^12.1.2",
+    "@nestjs/schematics": "^12.0.6",
+    "@nestjs/testing": "^12.1.2",
+    "@rspack/core": "^2.2.8",
+    "@types/express": "^5.0.6",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^22.20.5",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.15.1",
+    "jest": "^30.5.2",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2",
+    "ts-jest": "^29.4.14",
+    "typescript": "~6.0.2"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": ".",
+    "roots": [
+      "<rootDir>/libs/"
+    ],
+    "testRegex": ".*\\.spec\\.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "collectCoverageFrom": [
+      "libs/**/*.(t|j)s"
+    ],
+    "coverageDirectory": "./coverage",
+    "testEnvironment": "node"
+  }
+}

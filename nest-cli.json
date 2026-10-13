@@ -1,0 +1,16 @@
+{
+  "projects": {
+    "oauth-charter": {
+      "type": "library",
+      "root": "libs/oauth-charter",
+      "entryFile": "index",
+      "sourceRoot": "libs/oauth-charter/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/oauth-charter/tsconfig.lib.json"
+      }
+    }
+  },
+  "compilerOptions": {
+    "builder": "tsc"
+  }
+}
