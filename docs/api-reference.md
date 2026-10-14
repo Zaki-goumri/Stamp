@@ -205,7 +205,7 @@ Exported by the module. Use it if you want to build your own controller.
 `OAuthError` extends Nest's `HttpException` and returns the OAuth error shape.
 
 ```ts
-import { Errors, OAuthError } from "stamp";
+import { Errors, OAuthError } from "@zaki-goumri/stamp";
 
 throw Errors.invalidClient("unknown client");
 throw Errors.invalidGrant("code expired");

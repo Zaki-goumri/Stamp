@@ -1,9 +1,8 @@
 {
-  "name": "stamp",
-  "version": "0.0.1",
+  "name": "@zaki-goumri/stamp",
+  "version": "0.1.0",
   "description": "NestJS OAuth 2.0 authorization code + PKCE library",
-  "private": true,
-  "license": "UNLICENSED",
+  "license": "MIT",
   "main": "dist/libs/stamp/libs/stamp/src/index.js",
   "types": "dist/libs/stamp/libs/stamp/src/index.d.ts",
   "scripts": {
@@ -63,5 +62,28 @@
     ],
     "coverageDirectory": "./coverage",
     "testEnvironment": "node"
-  }
+  },
+  "author": "Zaki-goumri",
+  "homepage": "https://zaki-goumri.github.io/Stamp/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zaki-goumri/Stamp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Zaki-goumri/Stamp/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "nestjs",
+    "oauth",
+    "oauth2",
+    "pkce",
+    "authorization-code",
+    "nest"
+  ]
 }
