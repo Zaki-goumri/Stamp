@@ -152,7 +152,7 @@ How to do it with common databases:
 | MongoDB | `findOneAndUpdate({ code, consumedAt: null }, { $set: { consumedAt: new Date() } })` |
 | Redis | `GETDEL` the code, or `SET ... NX` a "used" key |
 
-> Tip: Redis is a great fit for codes. Set a TTL of 10 minutes and they clean up on their own.
+> Tip: Redis is a great fit for codes. Set the TTL to `codeExpiresIn` and they clean up on their own.
 
 ## Step 3: The JWT signer
 
@@ -234,6 +234,16 @@ Access token lifetime in seconds. Default is `300` (5 minutes).
 ```ts
 expiresIn: 60 * 15
 ```
+
+### `codeExpiresIn` (optional)
+
+Authorization code lifetime in seconds. Default is `600` (10 minutes).
+
+```ts
+codeExpiresIn: 60 * 5
+```
+
+Keep it short. A code only needs to live a few seconds, between the redirect and the `/token` call.
 
 ### `resolveUserId`
 

@@ -10,7 +10,10 @@
     "build": "nest build stamp",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:cov": "jest --coverage"
+    "test:cov": "jest --coverage",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "peerDependencies": {
     "@nestjs/common": "^11.0.0 || ^12.0.0",
@@ -38,7 +41,8 @@
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.2",
     "ts-jest": "^29.4.14",
-    "typescript": "~6.0.2"
+    "typescript": "~6.0.2",
+    "vitepress": "^1.6.4"
   },
   "jest": {
     "moduleFileExtensions": [

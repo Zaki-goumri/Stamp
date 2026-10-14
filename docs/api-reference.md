@@ -13,6 +13,7 @@ StampModule.forRootAsync({
   loginPagePath: "/auth/login",
   resolveUserId: (req) => req.user?.id,
   expiresIn: 60 * 15,
+  codeExpiresIn: 60 * 5,
 });
 ```
 
@@ -27,6 +28,7 @@ StampModule.forRootAsync({
 | `loginPagePath` | `string`                   | yes      | Where to redirect users who are not logged in. |
 | `resolveUserId` | `UserIdResolver`           | yes      | Reads the user id from the request. |
 | `expiresIn`     | `number`                   | no       | Access token lifetime in seconds. Default: `300` (5 minutes). |
+| `codeExpiresIn` | `number`                   | no       | Authorization code lifetime in seconds. Default: `600` (10 minutes). |
 
 Store classes are injected with `useExisting`. They must be provided and exported by a module in `imports`.
 
@@ -55,7 +57,7 @@ Starts the flow.
 1. Calls `resolveUserId(req)`.
 2. No user → redirect to `loginPagePath` with the same query string.
 3. Checks the client and the `redirect_uri`.
-4. Creates a code (valid 10 minutes) and saves it with `codeStore.upsertCode`.
+4. Creates a code (valid `codeExpiresIn` seconds, 10 minutes by default) and saves it with `codeStore.upsertCode`.
 5. Redirects to `redirect_uri` with `code` (and `state`, if you sent one) added to its query string. Existing query params are kept.
 
 **Errors** (HTTP 400, JSON)
@@ -95,12 +97,12 @@ Headers `Cache-Control: no-store` and `Pragma: no-cache` are set.
 | Error                    | Description |
 | ------------------------ | ----------- |
 | `unsupported_grant_type` | `grant_type` is not `authorization_code` |
-| `invalid_grant`          | code doesnt exist |
+| `invalid_grant`          | code does not exist |
 | `invalid_grant`          | code already consumed |
 | `invalid_grant`          | code expired |
 | `invalid_client`         | redirect mismatch |
 | `invalid_client`         | client id mismatch |
-| `invalid_client`         | client id doesnt have secert |
+| `invalid_client`         | client has no secret |
 | `invalid_client`         | secret mismatch |
 | `invalid_grant`          | PKCE verification failed |
 
