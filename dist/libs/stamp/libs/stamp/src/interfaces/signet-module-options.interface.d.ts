@@ -8,8 +8,11 @@ export interface SignetModuleAsyncOptions extends Pick<ModuleMetadata, "imports"
     loginPagePath: string;
     resolveUserId: UserIdResolver;
     expiresIn?: number;
+    codeExpiresIn?: number;
 }
 export declare const SIGNET_LOGIN_PAGE_PATH: unique symbol;
 export declare const SIGNET_USER_ID_RESOLVER: unique symbol;
 export declare const SIGNET_TOKEN_EXPIRES_IN: unique symbol;
+export declare const SIGNET_CODE_EXPIRES_IN: unique symbol;
 export declare const DEFAULT_TOKEN_EXPIRES_IN: number;
+export declare const DEFAULT_CODE_EXPIRES_IN: number;

@@ -24,12 +24,14 @@ let StampService = class StampService {
     codeStore;
     jwtSigner;
     expiresIn;
-    constructor(clientStore, loginPagePath, codeStore, jwtSigner, expiresIn) {
+    codeExpiresIn;
+    constructor(clientStore, loginPagePath, codeStore, jwtSigner, expiresIn, codeExpiresIn) {
         this.clientStore = clientStore;
         this.loginPagePath = loginPagePath;
         this.codeStore = codeStore;
         this.jwtSigner = jwtSigner;
         this.expiresIn = expiresIn;
+        this.codeExpiresIn = codeExpiresIn;
     }
     async handleRequest(q, userId) {
         const client = await this.clientStore.findClientById(q.client_id);
@@ -46,7 +48,7 @@ let StampService = class StampService {
             clientId: client.clientId,
             code_challenge: q.code_challenge,
             redirectUri: q.redirect_uri,
-            expireAt: new Date(Date.now() + 10 * 60 * 1000),
+            expireAt: new Date(Date.now() + this.codeExpiresIn * 1000),
             consumedAt: null,
         });
         const url = new URL(q.redirect_uri);
@@ -58,7 +60,7 @@ let StampService = class StampService {
     async exchangeCode(data) {
         const codeClient = await this.codeStore.findByCode(data.code);
         if (!codeClient) {
-            throw oauth_error_1.Errors.invalidGrant("code doesnt exist");
+            throw oauth_error_1.Errors.invalidGrant("code does not exist");
         }
         if (codeClient.consumedAt) {
             throw oauth_error_1.Errors.invalidGrant("code already consumed");
@@ -75,7 +77,7 @@ let StampService = class StampService {
         const client = await this.clientStore.findClientById(data.client_id);
         if (client?.type === "confidential") {
             if (!data.client_secret) {
-                throw oauth_error_1.Errors.invalidClient("client id doesnt have secert");
+                throw oauth_error_1.Errors.invalidClient("client has no secret");
             }
             if (!(await this.clientStore.compareHash(data.client_secret, client.clientSecretHash))) {
                 throw oauth_error_1.Errors.invalidClient("secret mismatch");
@@ -110,6 +112,7 @@ exports.StampService = StampService = __decorate([
     __param(2, (0, common_1.Inject)(interfaces_1.CODE_CLIENT_STORE)),
     __param(3, (0, common_1.Inject)(interfaces_1.JWT_SIGNER)),
     __param(4, (0, common_1.Inject)(interfaces_1.SIGNET_TOKEN_EXPIRES_IN)),
-    __metadata("design:paramtypes", [Object, String, Object, Object, Number])
+    __param(5, (0, common_1.Inject)(interfaces_1.SIGNET_CODE_EXPIRES_IN)),
+    __metadata("design:paramtypes", [Object, String, Object, Object, Number, Number])
 ], StampService);
 //# sourceMappingURL=stamp.service.js.map

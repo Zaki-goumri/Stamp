@@ -1,7 +1,9 @@
 import { Module, DynamicModule } from "@nestjs/common";
 import { StampService } from "./stamp.service";
 import {
+  DEFAULT_CODE_EXPIRES_IN,
   DEFAULT_TOKEN_EXPIRES_IN,
+  SIGNET_CODE_EXPIRES_IN,
   SIGNET_LOGIN_PAGE_PATH,
   SIGNET_TOKEN_EXPIRES_IN,
   SIGNET_USER_ID_RESOLVER,
@@ -47,6 +49,10 @@ export class StampModule {
         {
           provide: SIGNET_TOKEN_EXPIRES_IN,
           useValue: options.expiresIn ?? DEFAULT_TOKEN_EXPIRES_IN,
+        },
+        {
+          provide: SIGNET_CODE_EXPIRES_IN,
+          useValue: options.codeExpiresIn ?? DEFAULT_CODE_EXPIRES_IN,
         },
         StampService,
       ],

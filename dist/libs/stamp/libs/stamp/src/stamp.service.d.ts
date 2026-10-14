@@ -12,7 +12,8 @@ export declare class StampService {
     private readonly codeStore;
     private readonly jwtSigner;
     private readonly expiresIn;
-    constructor(clientStore: SignetClientsStore, loginPagePath: string, codeStore: CodeStore, jwtSigner: JwtSigner, expiresIn: number);
+    private readonly codeExpiresIn;
+    constructor(clientStore: SignetClientsStore, loginPagePath: string, codeStore: CodeStore, jwtSigner: JwtSigner, expiresIn: number, codeExpiresIn: number);
     handleRequest(q: AuthorizeQueryDto, userId: string): Promise<{
         url: string;
     }>;

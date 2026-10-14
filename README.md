@@ -19,7 +19,7 @@ The library does the OAuth part. You do the rest your way.
 - Authorization Code flow ([RFC 6749](https://datatracker.ietf.org/doc/html/rfc6749))
 - PKCE with `S256` ([RFC 7636](https://datatracker.ietf.org/doc/html/rfc7636))
 - Public clients (SPA, mobile) and confidential clients (backend with a secret)
-- One-time codes that expire after 10 minutes
+- One-time codes that expire after 10 minutes by default
 - Standard OAuth error responses (`invalid_client`, `invalid_grant`, ...)
 - Works with any database: Prisma, TypeORM, Mongoose, Redis, in-memory...
 - NestJS 11 and 12

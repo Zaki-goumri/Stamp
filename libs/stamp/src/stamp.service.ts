@@ -5,6 +5,7 @@ import {
   JWT_SIGNER,
   JwtSigner,
   SIGNET_CLIENT_STORE,
+  SIGNET_CODE_EXPIRES_IN,
   SIGNET_LOGIN_PAGE_PATH,
   SIGNET_TOKEN_EXPIRES_IN,
   SignetClientsStore,
@@ -30,6 +31,7 @@ export class StampService {
     @Inject(CODE_CLIENT_STORE) private readonly codeStore: CodeStore,
     @Inject(JWT_SIGNER) private readonly jwtSigner: JwtSigner,
     @Inject(SIGNET_TOKEN_EXPIRES_IN) private readonly expiresIn: number,
+    @Inject(SIGNET_CODE_EXPIRES_IN) private readonly codeExpiresIn: number,
   ) {}
 
   async handleRequest(q: AuthorizeQueryDto, userId: string) {
@@ -47,7 +49,7 @@ export class StampService {
       clientId: client.clientId,
       code_challenge: q.code_challenge,
       redirectUri: q.redirect_uri,
-      expireAt: new Date(Date.now() + 10 * 60 * 1000),
+      expireAt: new Date(Date.now() + this.codeExpiresIn * 1000),
       consumedAt: null,
     });
     const url = new URL(q.redirect_uri);
@@ -58,7 +60,7 @@ export class StampService {
   async exchangeCode(data: TokenBodyDto): Promise<TokenResponse> {
     const codeClient = await this.codeStore.findByCode(data.code);
     if (!codeClient) {
-      throw Errors.invalidGrant("code doesnt exist");
+      throw Errors.invalidGrant("code does not exist");
     }
     if (codeClient.consumedAt) {
       throw Errors.invalidGrant("code already consumed");
@@ -76,7 +78,7 @@ export class StampService {
     const client = await this.clientStore.findClientById(data.client_id);
     if (client?.type === "confidential") {
       if (!data.client_secret) {
-        throw Errors.invalidClient("client id doesnt have secert");
+        throw Errors.invalidClient("client has no secret");
       }
       if (
         !(await this.clientStore.compareHash(

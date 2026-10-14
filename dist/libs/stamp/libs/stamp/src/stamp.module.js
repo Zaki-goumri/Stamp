@@ -43,6 +43,10 @@ let StampModule = StampModule_1 = class StampModule {
                     provide: signet_module_options_interface_1.SIGNET_TOKEN_EXPIRES_IN,
                     useValue: options.expiresIn ?? signet_module_options_interface_1.DEFAULT_TOKEN_EXPIRES_IN,
                 },
+                {
+                    provide: signet_module_options_interface_1.SIGNET_CODE_EXPIRES_IN,
+                    useValue: options.codeExpiresIn ?? signet_module_options_interface_1.DEFAULT_CODE_EXPIRES_IN,
+                },
                 stamp_service_1.StampService,
             ],
             exports: [stamp_service_1.StampService],
