@@ -1,5 +1,7 @@
 # Stamp
 
+[![npm](https://img.shields.io/npm/v/@zaki-goumri-2/stamp)](https://www.npmjs.com/package/@zaki-goumri-2/stamp) [![license](https://img.shields.io/npm/l/@zaki-goumri-2/stamp)](LICENSE) [![docs](https://img.shields.io/badge/docs-website-blue)](https://zaki-goumri.github.io/Stamp/)
+
 Turn your NestJS app into an OAuth 2.0 provider.
 
 Stamp adds the **Authorization Code + PKCE** flow to your NestJS app. It gives you the `/authorize` and `/token` endpoints. You keep full control of your database, your users and your JWTs.
@@ -95,8 +97,10 @@ Your app now has:
 
 ## Documentation
 
-- [Getting started guide](docs/guide.md): full setup, step by step
-- [API reference](docs/api-reference.md): every option, interface and endpoint
+Full docs: **https://zaki-goumri.github.io/Stamp/**
+
+- [Getting started guide](https://zaki-goumri.github.io/Stamp/guide): full setup, step by step
+- [API reference](https://zaki-goumri.github.io/Stamp/api-reference): every option, interface and endpoint
 
 ## Limitations
 
@@ -117,6 +121,16 @@ cd Stamp
 npm install
 npm run build
 npm test
+npm run docs:dev
+```
+
+## Releasing
+
+Bump the version and push the tag. CI publishes to npm.
+
+```bash
+npm version patch
+git push --follow-tags
 ```
 
 ## License
