@@ -35,7 +35,7 @@ features:
 
 ```ts
 import { Module } from "@nestjs/common";
-import { StampModule } from "@zaki-goumri/stamp";
+import { StampModule } from "@zaki-goumri-2/stamp";
 
 @Module({
   imports: [
@@ -64,7 +64,7 @@ Your app now has:
 Install it from npm:
 
 ```bash
-npm install @zaki-goumri/stamp
+npm install @zaki-goumri-2/stamp
 ```
 
 Then follow the [getting started guide](/guide).

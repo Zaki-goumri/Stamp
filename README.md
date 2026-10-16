@@ -29,7 +29,7 @@ The library does the OAuth part. You do the rest your way.
 Install it from npm:
 
 ```bash
-npm install @zaki-goumri/stamp
+npm install @zaki-goumri-2/stamp
 ```
 
 Peer dependencies:
@@ -42,7 +42,7 @@ npm install @nestjs/common @nestjs/core @nestjs/platform-express class-validator
 
 ```ts
 import { Module } from "@nestjs/common";
-import { StampModule } from "@zaki-goumri/stamp";
+import { StampModule } from "@zaki-goumri-2/stamp";
 import { StoresModule } from "./stores.module";
 import { ClientStore } from "./client.store";
 import { CodeStore } from "./code.store";
