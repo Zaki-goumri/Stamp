@@ -11,7 +11,7 @@ We use in-memory stores to keep things short. In a real app, swap them for your 
 - `@nestjs/jwt` to sign tokens (or any JWT library)
 
 ```bash
-npm install @zaki-goumri-2/stamp @nestjs/jwt class-validator class-transformer
+npm install @zaki-g/stamp @nestjs/jwt class-validator class-transformer
 ```
 
 ## The big picture
@@ -44,7 +44,7 @@ import {
   SignetClient,
   CreateClientDto,
   UpdateClientDto,
-} from "@zaki-goumri-2/stamp";
+} from "@zaki-g/stamp";
 
 const scryptAsync = promisify(scrypt);
 
@@ -111,7 +111,7 @@ An authorization code is a short-lived, one-time ticket. The client swaps it for
 
 ```ts
 import { Injectable } from "@nestjs/common";
-import { CodeStore as ICodeStore, CodeClient } from "@zaki-goumri-2/stamp";
+import { CodeStore as ICodeStore, CodeClient } from "@zaki-g/stamp";
 
 @Injectable()
 export class CodeStore implements ICodeStore {
@@ -161,7 +161,7 @@ This builds the access token. You decide what goes inside.
 ```ts
 import { Injectable } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
-import { JwtSigner } from "@zaki-goumri-2/stamp";
+import { JwtSigner } from "@zaki-g/stamp";
 
 @Injectable()
 export class TokenSigner implements JwtSigner {
@@ -206,7 +206,7 @@ If you forget `exports`, Nest will throw a "can't resolve dependencies" error.
 
 ```ts
 import { Module } from "@nestjs/common";
-import { StampModule } from "@zaki-goumri-2/stamp";
+import { StampModule } from "@zaki-g/stamp";
 import { StoresModule } from "./stores.module";
 import { ClientStore } from "./client.store";
 import { CodeStore } from "./code.store";

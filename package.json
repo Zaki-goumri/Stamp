@@ -1,6 +1,6 @@
 {
-  "name": "@zaki-goumri-2/stamp",
-  "version": "0.1.0",
+  "name": "@zaki-g/stamp",
+  "version": "0.1.1",
   "description": "NestJS OAuth 2.0 authorization code + PKCE library",
   "license": "MIT",
   "main": "dist/libs/stamp/libs/stamp/src/index.js",

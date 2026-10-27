@@ -1,6 +1,6 @@
 # Stamp
 
-[![npm](https://img.shields.io/npm/v/@zaki-goumri-2/stamp)](https://www.npmjs.com/package/@zaki-goumri-2/stamp) [![license](https://img.shields.io/npm/l/@zaki-goumri-2/stamp)](LICENSE) [![docs](https://img.shields.io/badge/docs-website-blue)](https://zaki-goumri.github.io/Stamp/)
+[![npm](https://img.shields.io/npm/v/@zaki-g/stamp)](https://www.npmjs.com/package/@zaki-g/stamp) [![license](https://img.shields.io/npm/l/@zaki-g/stamp)](LICENSE) [![docs](https://img.shields.io/badge/docs-website-blue)](https://zaki-goumri.github.io/Stamp/)
 
 Turn your NestJS app into an OAuth 2.0 provider.
 
@@ -31,7 +31,7 @@ The library does the OAuth part. You do the rest your way.
 Install it from npm:
 
 ```bash
-npm install @zaki-goumri-2/stamp
+npm install @zaki-g/stamp
 ```
 
 Peer dependencies:
@@ -44,7 +44,7 @@ npm install @nestjs/common @nestjs/core @nestjs/platform-express class-validator
 
 ```ts
 import { Module } from "@nestjs/common";
-import { StampModule } from "@zaki-goumri-2/stamp";
+import { StampModule } from "@zaki-g/stamp";
 import { StoresModule } from "./stores.module";
 import { ClientStore } from "./client.store";
 import { CodeStore } from "./code.store";
